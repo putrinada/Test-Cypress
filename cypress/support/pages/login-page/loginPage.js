@@ -1,41 +1,42 @@
-const locators = require('../home-page/home-page-locators');
+const locators = require('../login-page/login-page-locators');
 const { faker }  = require('@faker-js/faker');
 const staticVars = require('../static-variables')
 
-class homePage {
+class loginPage {
     goToHomePage() {
         cy.visit('https://www.demoblaze.com/index.html');
     }
 
     verifyHomePageAppears() {
-        cy.xpath(locators.datatestid.imageCompanyLogo).should('be.visible');
+        cy.xpath(locators.datatestlogin.imageCompanyLogo).should('be.visible');
     }
 
-    clickSignUpMenu() {
-        cy.xpath('//*[@id="signin2"]').click();
+    clickLoginMenu() {
+        cy.xpath('//*[@id="login2"]').click();
     }
 
-    verifySignUpModalAppears() {
-        cy.xpath('//*[@id="signInModalLabel"]', { timeout: 1000 }).should('be.visible');
+    verifyLoginModalAppears() {
+        cy.xpath('//*[@id="logInModalLabel"]', { timeout: 1000 }).should('be.visible');
     }
 
     fillUsername(username) {
         if (username === 'random') {
             username = faker.person.firstName() + faker.number.int() + '@test.com';
         }
-        cy.xpath('//*[@id="sign-username"]', { timeout: 5000 })
+    
+        // Assume the login username field will be visible without an explicit wait
+        cy.xpath('//*[@id="loginusername"]', { timeout: 5000 })
             .should('be.visible')
             .clear()
-            .type('random');
-    
+            .type('random'); // T
     }
 
     fillPassword(password) {
-        cy.xpath('//*[@id="sign-password"]').type(password);
+        cy.xpath('//*[@id="loginpassword"]').type(password);
     }
 
-    clickSignUpButton() {
-        cy.xpath(locators.datatestid.button('Sign up')).click();
+    clickLoginButton() {
+        cy.xpath(locators.datatestlogin.button('Log in')).click();
     }
 
     verifyAlertAppears(errorMessage) {
@@ -52,17 +53,21 @@ class homePage {
         this.verifyAlertAppears(staticVars.error_message.user_alr_exists)
     }
 
-    verifySignUpSuccessMessageAppears() {
+    verifyLoginSuccessMessageAppears() {
         this.verifyAlertAppears(staticVars.success_message.signup)
     }
-
-    signUp(username, password) {
+    
+    verifyWelcomeMessageAppears(){
+        cy.get('body').should('not.contain', 'Some text that indicates login failed');
+        cy.xpath('//*[@id="nameofuser"]').should('be.visible');
+    }
+    login(username, password) {
         if (username != '') {
             this.fillUsername(username);
             this.fillPassword(password);
         }
-        this.clickSignUpButton()
+        this.clickLoginButton()
     }
 }
 
-module.exports = new homePage();
+module.exports = new loginPage();

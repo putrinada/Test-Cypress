@@ -2,17 +2,16 @@ const homePage = require('../support/pages/home-page/homePage')
 
 describe("Signup", () => {
     beforeEach(() => {
-        // pre step
-        
+        // pre ste
         
     })
-
+    
     it("with unregistered data", () => {
         homePage.goToHomePage()
         homePage.verifyHomePageAppears()
         homePage.clickSignUpMenu()
         homePage.verifySignUpModalAppears()
-        homePage.signUp('', 'jojo123')
+        homePage.signUp('', '1234')
         homePage.verifyEmptyCredsErrorMessageAppears()
     })
 
@@ -21,7 +20,7 @@ describe("Signup", () => {
         homePage.verifyHomePageAppears()
         homePage.clickSignUpMenu()
         homePage.verifySignUpModalAppears()
-        homePage.signUp('', 'jojo123')
+        homePage.signUp('', '1234')
         homePage.verifyEmptyCredsErrorMessageAppears()
     })
 
@@ -30,7 +29,7 @@ describe("Signup", () => {
         homePage.verifyHomePageAppears()
         homePage.clickSignUpMenu()
         homePage.verifySignUpModalAppears()
-        homePage.signUp('random', 'jojo123')
+        homePage.signUp('random', '1234')
         homePage.verifySignUpSuccessMessageAppears()
     })
 })
