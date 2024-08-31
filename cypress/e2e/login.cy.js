@@ -5,12 +5,12 @@ describe("Login", () => {
     
     })
     it("with unregistered data", () => {
-        loginPage.goToHomePage()
-        loginPage.verifyHomePageAppears()
-        loginPage.clickLoginMenu()
-        loginPage.verifyLoginModalAppears()
-        loginPage.login('', '1234')
-        loginPage.verifyEmptyCredsErrorMessageAppears()
+            loginPage.goToHomePage()
+            loginPage.verifyHomePageAppears()
+            loginPage.clickLoginMenu()
+            loginPage.verifyLoginModalAppears()
+            loginPage.login('unregisteredUser', '12345')
+            loginPage.verifyAlertAppears('User does not exist.')
     })
 
     it("with empty data", () => {
