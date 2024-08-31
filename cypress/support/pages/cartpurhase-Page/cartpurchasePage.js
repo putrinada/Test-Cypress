@@ -45,5 +45,5 @@ class CartPurchasePage {
       return cy.xpath('//button[text()="Purchase"]');
     }
   }
-  export default CartPurchasePage();
+  module.exports = new CartPurchasePage();
   
