@@ -1,4 +1,4 @@
-const cartpurchasePage = require('../support/pages/cartpuchase-page/cartpurchasePage')
+const cartPurchasePage = require('../support/pages/cartpurchase-page/cartpurchasePage');
 
 describe('Checkout Test', () => {
 
@@ -7,17 +7,17 @@ describe('Checkout Test', () => {
     
 })
   it('should checkout successfully', () => {
-    cartpurchasePage.goToHomePage()
-    cartpurchasePage.verifyHomePageAppears()
-    cartpurchasePage.getCartButton().click();
-    cartpurchasePage.getPlaceOrderButton().click();
-    cartpurchasePage.getNameField().type('John Doe');
-    cartpurchasePage.getCountryField().type('USA');
-    cartpurchasePage.getCityField().type('New York');
-    cartpurchasePage.getCardField().type('1234567812345678');
-    cartpurchasePage.getMonthField().type('12');
-    cartpurchasePage.getYearField().type('2025');
-    cartpurchasePage.getPurchaseButton().click();
+    cartPurchasePage.goToHomePage()
+    cartPurchasePage.verifyHomePageAppears()
+    cartPurchasePage.getCartButton().click();
+    cartPurchasePage.getPlaceOrderButton().click();
+    cartPurchasePage.getNameField().type('John Doe');
+    cartPurchasePage.getCountryField().type('USA');
+    cartPurchasePage.getCityField().type('New York');
+    cartPurchasePage.getCardField().type('1234567812345678');
+    cartPurchasePage.getMonthField().type('12');
+    cartPurchasePage.getYearField().type('2025');
+    cartPurchasePage.getPurchaseButton().click();
     // Add assertions to verify successful checkout
   });
 });

@@ -1,6 +1,6 @@
 const locators = require('../home-page/home-page-locators');
 
-class CartPurchasePage {
+class cartPurchasePage {
     goToHomePage() {
         cy.visit('https://www.demoblaze.com/index.html');
     }
@@ -45,5 +45,5 @@ class CartPurchasePage {
       return cy.xpath('//button[text()="Purchase"]');
     }
   }
-  module.exports = new CartPurchasePage();
+  module.exports = new cartPurchasePage();
   
