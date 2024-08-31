@@ -1,23 +1,28 @@
-const cartPurchasePage = require('../support/pages/cartpurchase-page/cartpurchasePage');
+const cartPurchasePage = require('../support/pages/cartpurchase-Page/cartpurchasePage');
 
 describe('Checkout Test', () => {
-
   beforeEach(() => {
-    // pre step
-    
-})
+    cartPurchasePage.goToHomePage();
+  });
+
   it('should checkout successfully', () => {
-    cartPurchasePage.goToHomePage()
-    cartPurchasePage.verifyHomePageAppears()
-    cartPurchasePage.getCartButton().click();
-    cartPurchasePage.getPlaceOrderButton().click();
-    cartPurchasePage.getNameField().type('John Doe');
-    cartPurchasePage.getCountryField().type('USA');
-    cartPurchasePage.getCityField().type('New York');
-    cartPurchasePage.getCardField().type('1234567812345678');
-    cartPurchasePage.getMonthField().type('12');
-    cartPurchasePage.getYearField().type('2025');
-    cartPurchasePage.getPurchaseButton().click();
-    // Add assertions to verify successful checkout
+    cartPurchasePage.verifyHomePageAppears();
+    cartPurchasePage.selectProduct('Samsung galaxy s6');
+    cartPurchasePage.addToCart();
+    cartPurchasePage.goToCart();
+    cartPurchasePage.getPlaceOrderButton();
+    cartPurchasePage.getNameField();
+    cartPurchasePage.getCountryField();
+    cartPurchasePage.getCityField();
+    cartPurchasePage.getCardField();
+    cartPurchasePage.getMonthField();
+    cartPurchasePage.getYearField();
+    cartPurchasePage.getPurchaseButton();
+
+    // Verify the confirmation message
+    cartPurchasePage.getConfirmationMessage().then((confirmationMessage) => {
+      expect(confirmationMessage).to.include('Thank you for your purchase!');
+    });
+    cartPurchasePage.confirmPurchase();
   });
 });

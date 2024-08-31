@@ -20,13 +20,13 @@ class homePage {
     }
 
     fillUsername(username) {
-        if (username === 'random') {
+        if (username === 'randomAja') {
             username = faker.person.firstName() + faker.number.int() + '@test.com';
         }
         cy.xpath('//*[@id="sign-username"]', { timeout: 5000 })
             .should('be.visible')
             .clear()
-            .type('random');
+            .type('randomAja');
     
     }
 

@@ -2,7 +2,7 @@ const homePage = require('../support/pages/home-page/homePage')
 
 describe("Signup", () => {
     beforeEach(() => {
-        // pre ste
+        // pre stenp
         
     })
     
@@ -29,7 +29,7 @@ describe("Signup", () => {
         homePage.verifyHomePageAppears()
         homePage.clickSignUpMenu()
         homePage.verifySignUpModalAppears()
-        homePage.signUp('random', '1234')
+        homePage.signUp('randomAja', '1234')
         homePage.verifySignUpSuccessMessageAppears()
     })
 })

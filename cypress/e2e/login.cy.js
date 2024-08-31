@@ -2,11 +2,8 @@ const loginPage = require('../support/pages/login-page/loginPage')
 
 describe("Login", () => {
     beforeEach(() => {
-        // pre step
-        
-        
+    
     })
-
     it("with unregistered data", () => {
         loginPage.goToHomePage()
         loginPage.verifyHomePageAppears()
@@ -29,7 +26,7 @@ describe("Login", () => {
         loginPage.verifyHomePageAppears()
         loginPage.clickLoginMenu()
         loginPage.verifyLoginModalAppears()
-        loginPage.login('random', '12345')
+        loginPage.login('randomAja', '1234')
         loginPage.verifyLoginSuccessMessageAppears()
         loginPage.verifyWelcomeMessageAppears();
     })

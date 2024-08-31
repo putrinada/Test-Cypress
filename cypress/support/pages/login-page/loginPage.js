@@ -16,11 +16,18 @@ class loginPage {
     }
 
     verifyLoginModalAppears() {
-        cy.xpath('//*[@id="logInModalLabel"]', { timeout: 1000 }).should('be.visible');
+       // cy.xpath('//*[@id="logInModalLabel"]', { timeout: 1000 }).should('be.visible');
+       
+       cy.xpath('//*[@id="logInModal"]', { timeout: 15000 }) // Increase timeout if needed
+       .should('have.css', 'opacity', '1')
+       .then(() => {
+           cy.xpath('//*[@id="logInModalLabel"]')
+               .should('be.visible');
+       });
     }
 
     fillUsername(username) {
-        if (username === 'random') {
+        if (username === 'randomAja') {
             username = faker.person.firstName() + faker.number.int() + '@test.com';
         }
     
@@ -28,7 +35,7 @@ class loginPage {
         cy.xpath('//*[@id="loginusername"]', { timeout: 5000 })
             .should('be.visible')
             .clear()
-            .type('random'); // T
+            .type('randomAja'); // T
     }
 
     fillPassword(password) {
